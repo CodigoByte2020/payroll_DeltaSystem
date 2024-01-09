@@ -32,6 +32,7 @@
         'views/report_contribution_register_templates.xml',
         'views/report_payslip_templates.xml',
         'views/report_payslip_details_templates.xml',
+        'views/pension_fund_administrators.xml',
         'data/mail_template.xml',
     ],
     'images': ['static/description/banner.png'],

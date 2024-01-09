@@ -33,44 +33,111 @@
                 <page name="other" position="move"/>
             </xpath>
 
-            <xpath expr="//group[@name='salary_and_advantages']" position="after">
-                <group string="Monthly Advantages in Cash" name='allowances'>
-                    <label for="hra"/>
-                    <div class="o_row">
-                        <field name="hra" nolabel="1"/>
-                        <span>/ month</span>
-                    </div>
-                    <label for="da"/>
-                    <div class="o_row">
-                        <field name="da" nolabel="1"/>
-                        <span>/ month</span>
-                    </div>
-                    <label for="travel_allowance"/>
-                    <div class="o_row">
+            <xpath expr="//field[@name='state']" position="before">
+                <button name="calculate_amounts" string="Calcular beneficios y descuentos" class="oe_highlight" type="object"/>
+            </xpath>
 
-                        <field name="travel_allowance" nolabel="1"/>
-                        <span>/ month</span>
-                    </div>
-                    <label for="meal_allowance"/>
-                    <div class="o_row">
+            <xpath expr="//group[@name='salary_and_advantages']" position="attributes">
+                <attribute name="string">Haberes imponibles</attribute>
+            </xpath>
 
-                        <field name="meal_allowance" nolabel="1"/>
-                        <span>/ month</span>
-                    </div>
-                    <label for="medical_allowance"/>
-                    <div class="o_row">
+            <xpath expr="//group[@name='salary_and_advantages']/div[@name='wage']" position="after">
+                <label for="legal_gratification"/>
+                <div class="o_row">
+                    <field name="legal_gratification" nolabel="1"/>
+                    <span>/ mes</span>
+                </div>
+                <label for="commissions"/>
+                <div class="o_row">
+                    <field name="commissions" nolabel="1"/>
+                    <span>/ mes</span>
+                </div>
+                <label for="production_bonus"/>
+                <div class="o_row">
+                    <field name="production_bonus" nolabel="1"/>
+                    <span>/ mes</span>
+                </div>
+                <label for="extra_hours"/>
+                <div class="o_row">
+                    <field name="extra_hours" nolabel="1"/>
+                    <span>/ mes</span>
+                </div>
+                <label for="total_taxable_assets"/>
+                <div class="o_row">
+                    <field name="total_taxable_assets" nolabel="1"/>
+                    <span>/ mes</span>
+                </div>
+            </xpath>
 
-                        <field name="medical_allowance" nolabel="1"/>
-                        <span>/ month</span>
-                    </div>
-                    <label for="other_allowance"/>
-                    <div class="o_row">
+            <xpath expr="//group[@name='yearly_advantages']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
 
-                        <field name="other_allowance" nolabel="1"/>
-                        <span>/ month</span>
+            <xpath expr="//group[@name='yearly_advantages']" position="after">
+                <group name="non_taxable_assets" string="Haberes no imponibles">
+                    <label for="movilization"/>
+                    <div class="o_row">
+                        <field name="movilization" nolabel="1"/>
+                        <span>/ mes</span>
+                    </div>
+                    <label for="cash_loss"/>
+                    <div class="o_row">
+                        <field name="cash_loss" nolabel="1"/>
+                        <span>/ mes</span>
+                    </div>
+                    <label for="tool_wear"/>
+                    <div class="o_row">
+                        <field name="tool_wear" nolabel="1"/>
+                        <span>/ mes</span>
+                    </div>
+                    <label for="collation"/>
+                    <div class="o_row">
+                        <field name="collation" nolabel="1"/>
+                        <span>/ mes</span>
+                    </div>
+                    <label for="travel_expenses"/>
+                    <div class="o_row">
+                        <field name="travel_expenses" nolabel="1"/>
+                        <span>/ mes</span>
+                    </div>
+                    <label for="household_allowance"/>
+                    <div class="o_row">
+                        <field name="household_allowance" nolabel="1"/>
+                        <span>/ mes</span>
+                    </div>
+                    <label for="compensation_years_service"/>
+                    <div class="o_row">
+                        <field name="compensation_years_service" nolabel="1"/>
+                        <span>/ mes</span>
+                    </div>
+                    <label for="compensation_termination_employment_relationship"/>
+                    <div class="o_row">
+                        <field name="compensation_termination_employment_relationship" nolabel="1"/>
+                        <span>/ mes</span>
+                    </div>
+                    <label for="total_non_taxable_assets"/>
+                    <div class="o_row">
+                        <field name="total_non_taxable_assets" nolabel="1"/>
+                        <span>/ mes</span>
                     </div>
                 </group>
+                <group name="provisional_discounts" string="Descuentos previsionales">
+                    <label for="pension_fund_administrators_id"/>
+                    <div class="o_row">
+                        <field name="pension_fund_administrators_id"/>
+                        <span>Monto AFP</span>
+                        <field name="afp_amount"/>
+                    </div>
+                    <field name="unemployment_insurance"/>
+                    <field name="fonasa"/>
+                    <field name="isapre"/>
+                    <field name="total_provisional_discounts"/>
+                </group>
+                <group name="income_tax_calculation" string="Cálculo de impuesto a la renta">
+                    <h3 class="text-danger">CÁLCULO DE IMPUESTO A LA RENTA</h3>
+                </group>
             </xpath>
+
         </field>
     </record>
 

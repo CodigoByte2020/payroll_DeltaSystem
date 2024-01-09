@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="pension_fund_administrators_view_tree" model="ir.ui.view">
+        <field name="name">pension.fund.administrators.view.tree</field>
+        <field name="model">pension.fund.administrators</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1" string="Pension Fund Administrators">
+                <field name="name"/>
+                <field name="variable_commission"/>
+            </tree>
+        </field>
+    </record>
+    <record id="pension_fund_administrators_action" model="ir.actions.act_window">
+        <field name="name">Administradores de fondos de pensiones</field>
+        <field name="res_model">pension.fund.administrators</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem id="pension_fund_administrators_menu"
+              action="pension_fund_administrators_action"
+              parent="menu_hr_payroll_configuration"
+              name="Administradores de fondos de pensiones"
+              sequence="60"/>
+</odoo>

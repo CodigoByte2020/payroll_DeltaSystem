@@ -29,6 +29,60 @@
                             </div>
                         </div>
                     </div>
+
+                    <h2>RRHH</h2>
+                    <div class="row mt16 o_settings_container" name="leave_type_setting">
+                        <div class="col-lg-6 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Sueldo Mínimo</span>
+                                <div class="text-muted">
+                                    <field name="minimum_wage" widget="monetary"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="value_uit" string="Valor de la UIT"/>
+                                <div class="text-muted">
+                                    UIT: Unidad Impositiva Tributaria
+                                </div>
+                            </div>
+                            <div class="o_setting_right_pane">
+<!--                                <span class="o_form_label">Valor de la UIT</span>-->
+                                <div class="text-muted">
+                                    <field name="value_uit" widget="monetary"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Seguro de desempleo</span>
+                                <div class="text-muted">
+                                    <field name="unemployment_insurance" widget="percentage"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="value_uit" string="Valor de la UF"/>
+                                <div class="text-muted">
+                                    UF: Unidad de Fomento
+                                </div>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    <field name="value_uf" widget="monetary"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </xpath>
         </field>
