@@ -63,7 +63,8 @@
                             <div class="o_setting_right_pane">
                                 <span class="o_form_label">Seguro de desempleo</span>
                                 <div class="text-muted">
-                                    <field name="unemployment_insurance" widget="percentage"/>
+<!--                                    <field name="unemployment_insurance" widget="percentage"/>-->
+                                    <field name="unemployment_insurance"/>
                                 </div>
                             </div>
                         </div>

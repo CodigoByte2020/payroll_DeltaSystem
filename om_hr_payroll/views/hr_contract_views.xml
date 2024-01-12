@@ -34,7 +34,7 @@
             </xpath>
 
             <xpath expr="//field[@name='state']" position="before">
-                <button name="calculate_amounts" string="Calcular beneficios y descuentos" class="oe_highlight" type="object"/>
+                <button name="cron_calculate_benefits_discounts" string="Calcular beneficios y descuentos" class="oe_highlight" type="object"/>
             </xpath>
 
             <xpath expr="//group[@name='salary_and_advantages']" position="attributes">
@@ -62,11 +62,11 @@
                     <field name="extra_hours" nolabel="1"/>
                     <span>/ mes</span>
                 </div>
-                <label for="total_taxable_assets"/>
-                <div class="o_row">
-                    <field name="total_taxable_assets" nolabel="1"/>
-                    <span>/ mes</span>
-                </div>
+<!--                <label for="total_taxable_assets"/>-->
+<!--                <div class="o_row">-->
+<!--                    <field name="total_taxable_assets" nolabel="1"/>-->
+<!--                    <span>/ mes</span>-->
+<!--                </div>-->
             </xpath>
 
             <xpath expr="//group[@name='yearly_advantages']" position="attributes">
@@ -115,11 +115,11 @@
                         <field name="compensation_termination_employment_relationship" nolabel="1"/>
                         <span>/ mes</span>
                     </div>
-                    <label for="total_non_taxable_assets"/>
-                    <div class="o_row">
-                        <field name="total_non_taxable_assets" nolabel="1"/>
-                        <span>/ mes</span>
-                    </div>
+<!--                    <label for="total_non_taxable_assets"/>-->
+<!--                    <div class="o_row">-->
+<!--                        <field name="total_non_taxable_assets" nolabel="1"/>-->
+<!--                        <span>/ mes</span>-->
+<!--                    </div>-->
                 </group>
                 <group name="provisional_discounts" string="Descuentos previsionales">
                     <label for="pension_fund_administrators_id"/>
@@ -131,7 +131,7 @@
                     <field name="unemployment_insurance"/>
                     <field name="fonasa"/>
                     <field name="isapre"/>
-                    <field name="total_provisional_discounts"/>
+<!--                    <field name="total_provisional_discounts"/>-->
                 </group>
                 <group name="income_tax_calculation" string="Cálculo de impuesto a la renta">
                     <h3 class="text-danger">CÁLCULO DE IMPUESTO A LA RENTA</h3>

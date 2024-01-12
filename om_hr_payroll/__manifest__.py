@@ -34,6 +34,7 @@
         'views/report_payslip_details_templates.xml',
         'views/pension_fund_administrators.xml',
         'data/mail_template.xml',
+        'data/ir_cron_data.xml'
     ],
     'images': ['static/description/banner.png'],
     'application': True,

@@ -7,6 +7,7 @@
 # >>> NUMERO    FECHA (DD/MM/YYYY)  DESARROLLADOR               CAMBIOS EFECTUADOS
 # >>> 00001     20/12/2022          GIANMARCO CONTRERAS         AGREGA CAMPOS PARA PERSONALIZACIÓN DE NÓMINAS.
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+import pytz
 
 AFP_SELECTION = [
     ('capital', 'Capital'),
@@ -107,10 +108,28 @@ class HrContract(models.Model):
     def get_total_taxable_assets(self):
         return self.wage + self.legal_gratification + self.commissions + self.production_bonus + self.extra_hours
 
+    def set_taxable_assets(self):
+        movilization = 553.266666666667 * 30
+        collation = 553.266666666667 * 30
+        data = {
+            'movilization': movilization,
+            'collation': collation
+        }
+        self.write(data)
+
     def set_provisional_discounts(self):
+        params = self.env['ir.config_parameter'].sudo()
         total_taxable_assets = self.get_total_taxable_assets()
         afp_amount = total_taxable_assets * (self.pension_fund_administrators_id.variable_commission / 100)
-        unemployment_insurance_amount = total_taxable_assets * (0.6 / 100)
+
+        # SEGURO DE DESEMPLEO
+        unemployment_insurance_parameter = params.get_param('om_hr_payroll.unemployment_insurance')
+        # unemployment_insurance_amount = total_taxable_assets * (0.6 / 100)
+        unemployment_insurance_amount = total_taxable_assets * (float(unemployment_insurance_parameter) / 100)
+
+        # UNIDAD DE FOMENTO
+        value_uf = params.get_param('om_hr_payroll.value_uf')
+
         fonasa_amount = total_taxable_assets * (7 / 100)
         data = {
             'afp_amount': afp_amount,
@@ -119,7 +138,22 @@ class HrContract(models.Model):
         }
         self.write(data)
 
-    def calculate_amounts(self):
+    @api.model
+    def _set_value_uf(self):
+        cron = self.env.ref('om_hr_payroll.ir_cron_calculate_benefits_discounts')
+        # DEFINIR LA ZONA HORARIA DE DESTINO (SANTIAGO/CHILE)
+        # timezone = pytz.timezone(self._context.get('tz') or self.env.user.tz or 'America/Santiago')
+        timezone = pytz.timezone('America/Santiago')
+
+        # AGREGAR INFORMACIÓN DE ZONA HORARIA AL OBJETO DATETIME
+        datetime_utc = pytz.utc.localize(cron.nextcall)
+        datetime_timezone = datetime_utc.astimezone(timezone)
+
+        value_uf = self.env['res.config.settings'].sudo().get_value_uf(date=datetime_timezone)
+        self.env['ir.config_parameter'].sudo().set_param('om_hr_payroll.value_uf', value_uf)
+
+    def cron_calculate_benefits_discounts(self):
+        self.set_taxable_assets()
         self.set_provisional_discounts()
 
 
